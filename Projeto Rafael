@@ -1,0 +1,220 @@
+/************************************************************/
+/* Aula 07 - Desenhando na Matriz de LEDs                   */
+/* Programação do Módulo Matriz de LED 8x8.                 */
+/* Ao transferir o código abaixo para seu Arduino, será     */
+/* apresentado no Display 8x8, uma imagem de um coração     */
+/* pulsante.                                                */
+/* Links para obtenção da biblioteca by Eberhard Fahle      */
+/* http://librarymanager/All#LedControl#well                */
+/* https://github.com/danidask/MatrizLed                    */
+/************************************************************/
+
+#include <LedControl.h>
+/* Declaramos os pinos: (DIN, CLK, CS,nº de displays          */
+/*conectados em série).                                       */
+LedControl lc = LedControl(8, 10, 9, 1);
+/* Pausa entre o movimento do alien.                          */
+int tempo = 100;
+/* Codigo binário do alien (0 = desligado e 1 = ligado)   */
+/* Um alien 1.                                            */
+byte Alien_1[] = {
+  B10011000,
+  B01011100,
+  B00110110,
+  B00011110,
+  B00011110,
+  B00110110,
+  B01011100,
+  B10011000,
+};
+/* Um alien 2.                                            */
+byte Alien_2[] = {
+  B00011000,
+  B10011100,
+  B01110110,
+  B00011110,
+  B00011110,
+  B01110110,
+  B10011100,
+  B00011000,
+};
+/* Um alien 3.                                            */
+byte Alien_3[] = {
+  B00011000,
+  B00011100,
+  B11110110,
+  B00011110,
+  B00011110,
+  B11110110,
+  B00011100,
+  B00011000,
+};
+/* Um alien 4.                                            */
+byte Alien_4[] = {
+  B00001100,
+  B00001110,
+  B01011011,
+  B00101111,
+  B00101111,
+  B01011011,
+  B00001110,
+  B00001100,
+};
+/* Um alien 5.                                            */
+byte Alien_5[] = {
+  B00001100,
+  B00001110,
+  B00011011,
+  B01101111,
+  B01101111,
+  B00011011,
+  B00001110,
+  B00001100,
+};
+/* Um alien 6.                                            */
+byte Alien_6[] = {
+  B00001100,
+  B00001110,
+  B00111011,
+  B01001111,
+  B01001111,
+  B00111011,
+  B00001110,
+  B00001100,
+};
+/* Um alien 7.                                            */
+byte Alien_7[] = {
+  B00001100,
+  B00101110,
+  B01011011,
+  B00001111,
+  B00001111,
+  B01011011,
+  B00101110,
+  B00001100,
+};
+/* Um alien 8.                                            */
+byte Alien_8[] = {
+  B00011000,
+  B11011100,
+  B00110110,
+  B00011110,
+  B00011110,
+  B00110110,
+  B11011100,
+  B00011000,
+};
+void setup() {
+  /* Inicia a matriz de LED. O número zero representa o      */
+  /* endereço da primeira matiz de LED conectada ao Arduino. */
+  /* Podemos conectar até um máximo de 5 matrizes em série   */
+  /* endereçadas de 0 a 4.                                   */
+  lc.shutdown(0, false);
+  /* Define o brilho dos LEDs na matriz de endereço 0 para   */
+  /* o valor 10. (A intensidade varia de 0 a 15).            */
+  lc.setIntensity(0, 10);
+  /* Desliga todos os LEDs da matriz de endereço 0.          */
+  lc.clearDisplay(0);
+}
+void loop() {
+  /* Chama a função que gera a imagem do alien 1.    */
+  mostra_alien_1();
+  /* Pausa entre a transição.                    */
+  delay(tempo);
+  /* Chama a função que gera a imagem do alien 2.     */
+  mostra_alien_2();
+  /* Pausa entre a transição.                    */
+  delay(tempo);
+    /* Chama a função que gera a imagem do alien 3.     */
+  mostra_alien_3();
+  /* Pausa entre a transição.                     */
+  delay(tempo);
+    /* Chama a função que gera a imagem do alien 4.     */
+  mostra_alien_4();
+  /* Pausa entre a transição.                       */
+  delay(tempo);
+  /* Chama a função que gera a imagem do alien 5.    */
+  mostra_alien_5();
+  /* Pausa entre a transição.                    */
+  delay(tempo);
+  /* Chama a função que gera a imagem do alien 6.     */
+  mostra_alien_6();
+  /* Pausa entre a transição.                    */
+  delay(tempo);
+    /* Chama a função que gera a imagem do alien 7.     */
+  mostra_alien_7();
+  /* Pausa entre a transição.                     */
+  delay(tempo);
+    /* Chama a função que gera a imagem do alien 8.     */
+  mostra_alien_8();
+  /* Pausa entre a transição.                       */
+  delay(tempo);
+  /* Chama a função que gera a imagem do alien 1.    */
+  mostra_Alien_1();
+  /* Pausa entre a transição.                    */
+  delay(tempo);
+}
+/* Função para gerar o alien 1.                      */
+void mostra_alien_1()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_1[i]);
+  }
+}
+/* Função para gerar o alien 2.                      */
+void mostra_alien_2()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_2[i]);
+  }
+}
+/* Função para gerar o alien 3.                      */
+void mostra_alien_3()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_3[i]);
+  }
+}
+/* Função para gerar o alien 4.                      */
+void mostra_alien_4()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_4[i]);
+  }
+}
+/* Função para gerar o alien 5.                      */
+void mostra_alien_5()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_5[i]);
+  }
+}
+/* Função para gerar o alien 6.                      */
+void mostra_alien_6()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_6[i]);
+  }
+}
+/* Função para gerar o alien 7.                      */
+void mostra_alien_7()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_7[i]);
+  }
+}
+/* Função para gerar o alien 8.                      */
+void mostra_alien_8()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    lc.setRow(0, i, Alien_8[i]);
+  }
+}
